@@ -1,20 +1,15 @@
-const data = []
+const getNewVolcabs = (paragraph, vocabList = []) => {
+    // remove new line keys
+    paragraph = paragraph.replaceAll('\n', ' ')
 
-// place your paragraph
-let paragraph = `
-make repeated use of a mathematical or 
+    // purify data and add new word to data array
+    paragraph.split(' ').map(item => {
+        if(!vocabList.includes(item) && item !== '') {
+            vocabList.push(item.replace('.', ''))
+        }
+    })
 
-computational procedure, applying it each time to the result of the previous application; perform iteration.
-`
+    return vocabList.sort()
+}
 
-// remove new line keys
-paragraph = paragraph.replaceAll('\n', ' ')
-
-// purify data and add new word to data array
-paragraph.split(' ').map(item => {
-    if(!data.includes(item) && item !== '') {
-        data.push(item.replace('.', ''))
-    }
-})
-
-console.log(data)
+// getNewVolcabs('hello world', ['world'])
